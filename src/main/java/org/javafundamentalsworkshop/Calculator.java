@@ -10,39 +10,52 @@ public class Calculator {
          int number2;
          int menuChoice;
          int result;
-        Scanner sc = new Scanner(System.in);
-        do {
-           //number1=0;
-            //number2=0;
-            printMenu(sc);
-            System.out.print("Pick a number from the menu: ");
-            menuChoice = sc.nextInt();
-            switch(menuChoice){
-                case 1: number1=getOneNumber(sc,"FirstNumber: ");
-                        number2=getOneNumber(sc,"SecondNumber: ");
-                        System.out.println("Result: " + getAddition(number1,number2));
-                        break;
+         Scanner sc = new Scanner(System.in);
+         
+         try {
 
-                case 2: number1=getOneNumber(sc,"FirstNumber: ");
-                        number2=getOneNumber(sc,"SecondNumber: ");
-                        System.out.println("Result: " + getSubtraction(number1,number2));
-                        break;
-                case 3: number1=getOneNumber(sc,"FirstNumber: ");
-                        number2=getOneNumber(sc,"SecondNumber: ");
-                        System.out.println("Result: " + getMultiplication(number1,number2));
-                        break;
-                case 4:
-                        number1=getOneNumber(sc,"FirstNumber: ");
-                        number2=getOneNumber(sc,"SecondNumber: ");
-                        System.out.println("Result: " + getDivision(number1,number2));
-                        break;
+             do {
+                 //number1=0;
+                 //number2=0;
+                 printMenu(sc);
+                 System.out.print("Pick a number from the menu: ");
+                 menuChoice = sc.nextInt();
+                 switch (menuChoice) {
+                     case 1:
+                         number1 = getOneNumber(sc, "FirstNumber: ");
+                         number2 = getOneNumber(sc, "SecondNumber: ");
+                         System.out.println("Result: " + getAddition(number1, number2));
+                         break;
+
+                     case 2:
+                         number1 = getOneNumber(sc, "FirstNumber: ");
+                         number2 = getOneNumber(sc, "SecondNumber: ");
+                         System.out.println("Result: " + getSubtraction(number1, number2));
+                         break;
+                     case 3:
+                         number1 = getOneNumber(sc, "FirstNumber: ");
+                         number2 = getOneNumber(sc, "SecondNumber: ");
+                         System.out.println("Result: " + getMultiplication(number1, number2));
+                         break;
+                     case 4:
+                         number1 = getOneNumber(sc, "FirstNumber: ");
+                         number2 = getOneNumber(sc, "SecondNumber: ");
+                         System.out.println("Result: " + getDivision(number1, number2));
+                         break;
 
 
-            }
+                 }
 
 
-        }while (menuChoice!=5) ;
+             } while (menuChoice != 5);
+         }catch(NumberFormatException nfe){
+                System.err.println("Error: " + nfe.getMessage());
 
+         }finally {         // Safety, might not need this check????
+             if(sc!=null){
+                 sc.close();
+             }
+         }
     }
 
     public static void  printMenu(Scanner sc){
